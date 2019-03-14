@@ -26,7 +26,7 @@ export default {
      return descriptor;
      },*/
     checkAuth(token) {
-        return this.getToken(token);
+        return this.decodeToken(token);
     },
 
     updateAuth(userid) {
@@ -38,7 +38,7 @@ export default {
         return token;
     },
 
-    async getToken(token) {
+    async decodeToken(token) {
         const {secret} = this.config('jwt');
         let _this = this;
         let userInfo = await verify(token, secret);
